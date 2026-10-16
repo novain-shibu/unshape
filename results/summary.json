@@ -1,0 +1,212 @@
+{
+ "synthetic": {
+  "wiki_10_NirmalaUI.edge.pdf": {
+   "ocr_sec_per_page": 6.0,
+   "ocr_word_recall": 0.9309,
+   "ocr_cer": 0.0158,
+   "pymupdf_word_recall": 0.8022,
+   "pymupdf_cer": 0.027,
+   "pdfminer_word_recall": 0.5542,
+   "pdfminer_cer": 0.136,
+   "unshape_word_recall": 0.9906,
+   "unshape_cer": 0.002
+  },
+  "wiki_10_NirmalaUI.word.pdf": {
+   "ocr_sec_per_page": 4.72,
+   "ocr_word_recall": 0.9388,
+   "ocr_cer": 0.01,
+   "pymupdf_word_recall": 0.3375,
+   "pymupdf_cer": 0.2024,
+   "pdfminer_word_recall": 0.3375,
+   "pdfminer_cer": 0.2029,
+   "unshape_word_recall": 0.9937,
+   "unshape_cer": 0.0007
+  },
+  "wiki_5545_NirmalaUI.edge.pdf": {
+   "ocr_sec_per_page": 5.7,
+   "ocr_word_recall": 0.9288,
+   "ocr_cer": 0.0143,
+   "pymupdf_word_recall": 0.8136,
+   "pymupdf_cer": 0.0228,
+   "pdfminer_word_recall": 0.5644,
+   "pdfminer_cer": 0.1156,
+   "unshape_word_recall": 0.9949,
+   "unshape_cer": 0.0007
+  },
+  "wiki_5545_NirmalaUI.word.pdf": {
+   "ocr_sec_per_page": 4.57,
+   "ocr_word_recall": 0.939,
+   "ocr_cer": 0.0111,
+   "pymupdf_word_recall": 0.4288,
+   "pymupdf_cer": 0.165,
+   "pdfminer_word_recall": 0.4237,
+   "pdfminer_cer": 0.1654,
+   "unshape_word_recall": 0.9949,
+   "unshape_cer": 0.001
+  }
+ },
+ "real_groups": {
+  "gazette_word2019": {
+   "pdfs": 10,
+   "malayalam_words": 22099,
+   "rendering_verified": 20950,
+   "share": 0.948,
+   "per_pdf": {
+    "prs_1.pdf": 0.8991,
+    "prs_10.pdf": 0.9083,
+    "prs_2.pdf": 0.9125,
+    "prs_3.pdf": 0.9553,
+    "prs_4.pdf": 0.9555,
+    "prs_5.pdf": 0.9195,
+    "prs_6.pdf": 0.9374,
+    "prs_7.pdf": 0.8836,
+    "prs_8.pdf": 0.9617,
+    "prs_9.pdf": 0.9513
+   },
+   "pdfs_at_or_above_95pct": 4,
+   "share_95ci_bootstrap_over_pdfs": [
+    0.9322,
+    0.9532
+   ]
+  },
+  "print_to_pdf": {
+   "pdfs": 5,
+   "malayalam_words": 2260,
+   "rendering_verified": 2061,
+   "share": 0.9119,
+   "per_pdf": {
+    "air_1.pdf": 0.8528,
+    "ku_1.pdf": 0.9468,
+    "ku_2.pdf": 0.9477,
+    "ku_3.pdf": 0.9442,
+    "ku_4.pdf": 0.863
+   },
+   "pdfs_at_or_above_95pct": 0,
+   "share_95ci_bootstrap_over_pdfs": [
+    0.8672,
+    0.9465
+   ]
+  },
+  "libreoffice": {
+   "pdfs": 1,
+   "malayalam_words": 3,
+   "rendering_verified": 3,
+   "share": 1.0,
+   "per_pdf": {
+    "prs_11.pdf": 1.0
+   },
+   "pdfs_at_or_above_95pct": 1
+  },
+  "unseen_wkhtmltopdf_frozen_catalogue": {
+   "pdfs": 6,
+   "malayalam_words": 1857,
+   "rendering_verified": 0,
+   "share": 0.0,
+   "per_pdf": {
+    "lsg_1.pdf": 0.0,
+    "lsg_4.pdf": 0.0,
+    "lsg_5.pdf": 0.0,
+    "lsg_6.pdf": 0.0,
+    "lsg_7.pdf": 0.0,
+    "lsg_10.pdf": 0.0
+   },
+   "pdfs_at_or_above_95pct": 0,
+   "share_95ci_bootstrap_over_pdfs": [
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "ocr_real_overlap": {
+  "air_1.pdf": {
+   "pages": 9,
+   "verified_words": 649,
+   "ocr_has_ours": 0.9353,
+   "pymupdf_has_ours": 0.2234
+  },
+  "ku_1.pdf": {
+   "pages": 3,
+   "verified_words": 267,
+   "ocr_has_ours": 0.9326,
+   "pymupdf_has_ours": 0.3184
+  },
+  "ku_2.pdf": {
+   "pages": 3,
+   "verified_words": 507,
+   "ocr_has_ours": 0.9586,
+   "pymupdf_has_ours": 0.2525
+  },
+  "ku_3.pdf": {
+   "pages": 5,
+   "verified_words": 575,
+   "ocr_has_ours": 0.9409,
+   "pymupdf_has_ours": 0.2626
+  },
+  "ku_4.pdf": {
+   "pages": 1,
+   "verified_words": 63,
+   "ocr_has_ours": 0.9683,
+   "pymupdf_has_ours": 0.2381
+  },
+  "prs_1.pdf": {
+   "pages": 8,
+   "verified_words": 410,
+   "ocr_has_ours": 0.9927,
+   "pymupdf_has_ours": 0.3488
+  },
+  "prs_10.pdf": {
+   "pages": 6,
+   "verified_words": 317,
+   "ocr_has_ours": 0.9937,
+   "pymupdf_has_ours": 0.3375
+  },
+  "prs_2.pdf": {
+   "pages": 8,
+   "verified_words": 386,
+   "ocr_has_ours": 0.9819,
+   "pymupdf_has_ours": 0.3653
+  },
+  "prs_3.pdf": {
+   "pages": 15,
+   "verified_words": 2229,
+   "ocr_has_ours": 0.9803,
+   "pymupdf_has_ours": 0.3239
+  },
+  "prs_4.pdf": {
+   "pages": 15,
+   "verified_words": 2212,
+   "ocr_has_ours": 0.9788,
+   "pymupdf_has_ours": 0.3246
+  },
+  "prs_5.pdf": {
+   "pages": 15,
+   "verified_words": 1200,
+   "ocr_has_ours": 0.9783,
+   "pymupdf_has_ours": 0.355
+  },
+  "prs_6.pdf": {
+   "pages": 15,
+   "verified_words": 1212,
+   "ocr_has_ours": 0.9761,
+   "pymupdf_has_ours": 0.3705
+  },
+  "prs_7.pdf": {
+   "pages": 6,
+   "verified_words": 281,
+   "ocr_has_ours": 0.9822,
+   "pymupdf_has_ours": 0.4306
+  },
+  "prs_8.pdf": {
+   "pages": 15,
+   "verified_words": 1257,
+   "ocr_has_ours": 0.9745,
+   "pymupdf_has_ours": 0.3325
+  },
+  "prs_9.pdf": {
+   "pages": 15,
+   "verified_words": 1928,
+   "ocr_has_ours": 0.9637,
+   "pymupdf_has_ours": 0.2552
+  }
+ }
+}

@@ -1,0 +1,670 @@
+[
+ {
+  "pdf": "prs_1.pdf",
+  "ml_words": 456,
+  "self_verified": 0.8991,
+  "stretches": {
+   "verified": 425,
+   "nofont": 90,
+   "unverified": 31
+  },
+  "sec": 35.36,
+  "subsets": {
+   "BCDEEE+NotoSerifMalayalam": [
+    "37/37",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDFEE+NotoSerifMalayalam-Bold": [
+    "33/33",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDGEE+NotoSerifMalayalam-Bold": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCDHEE+NotoSerifMalayalam": [
+    "142/142",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDIEE+NotoSerifMalayalam": [
+    "142/142",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDJEE+NotoSerifMalayalam": [
+    "37/37",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "KVJAWJ+Kartika-Bold": [
+    "0/52",
+    null
+   ],
+   "BCDMEE+Rachana": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCECEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "prs_10.pdf",
+  "ml_words": 349,
+  "self_verified": 0.9083,
+  "stretches": {
+   "verified": 322,
+   "nofont": 125
+  },
+  "sec": 18.65,
+  "subsets": {
+   "BCDEEE+NotoSerifMalayalam": [
+    "57/57",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDFEE+NotoSerifMalayalam-Bold": [
+    "17/17",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDGEE+NotoSerifMalayalam-Bold": [
+    "17/17",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDHEE+NotoSerifMalayalam": [
+    "135/135",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDIEE+NotoSerifMalayalam": [
+    "135/135",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDJEE+NotoSerifMalayalam": [
+    "57/57",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "FDHEXY+Kartika-Bold": [
+    "0/54",
+    null
+   ],
+   "BCDMEE+NotoSerifMalayalam-Bold": [
+    "22/22",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDPEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCEAEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "prs_11.pdf",
+  "ml_words": 3,
+  "self_verified": 1.0,
+  "stretches": {
+   "verified": 3
+  },
+  "sec": 1.58,
+  "subsets": {
+   "BAAAAA+Rachana": [
+    "43/43",
+    "smc_old/6.0_Rachana.ttf"
+   ],
+   "DAAAAA+Rachana": [
+    "23/23",
+    "smc_old/5.0.1_Rachana.ttf"
+   ]
+  }
+ },
+ {
+  "pdf": "prs_2.pdf",
+  "ml_words": 423,
+  "self_verified": 0.9125,
+  "stretches": {
+   "verified": 390,
+   "nofont": 135
+  },
+  "sec": 58.23,
+  "subsets": {
+   "BCDFEE+NotoSerifMalayalam": [
+    "56/56",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDGEE+NotoSerifMalayalam": [
+    "141/141",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDHEE+NotoSerifMalayalam-Bold": [
+    "14/14",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDIEE+NotoSerifMalayalam-Bold": [
+    "14/14",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDJEE+NotoSerifMalayalam": [
+    "141/141",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDKEE+NotoSerifMalayalam": [
+    "56/56",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "DJYXEB+Kartika-Bold": [
+    "0/54",
+    null
+   ],
+   "BCDMEE+NotoSerifMalayalam-Bold": [
+    "73/73",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDNEE+NotoSerifMalayalam-Bold": [
+    "73/73",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCEAEE+Kartika-Bold": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCECEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCEDEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "prs_3.pdf",
+  "ml_words": 6061,
+  "self_verified": 0.9553,
+  "stretches": {
+   "verified": 5919,
+   "nofont": 89,
+   "unverified": 256
+  },
+  "sec": 24.76,
+  "subsets": {
+   "BCDEEE+NotoSerifMalayalam": [
+    "155/155",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDFEE+NotoSerifMalayalam": [
+    "43/43",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDGEE+NotoSerifMalayalam-Bold": [
+    "64/64",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDHEE+NotoSerifMalayalam-Bold": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCDIEE+NotoSerifMalayalam": [
+    "155/155",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDJEE+NotoSerifMalayalam": [
+    "43/43",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "MAQODH+Kartika-Bold": [
+    "0/54",
+    null
+   ],
+   "BCDNEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "prs_4.pdf",
+  "ml_words": 6026,
+  "self_verified": 0.9555,
+  "stretches": {
+   "verified": 5886,
+   "nofont": 89,
+   "unverified": 253
+  },
+  "sec": 34.91,
+  "subsets": {
+   "BCDEEE+NotoSerifMalayalam": [
+    "159/159",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDFEE+NotoSerifMalayalam": [
+    "39/39",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDGEE+NotoSerifMalayalam-Bold": [
+    "65/65",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDHEE+NotoSerifMalayalam-Bold": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCDIEE+NotoSerifMalayalam": [
+    "159/159",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDJEE+NotoSerifMalayalam": [
+    "39/39",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "SSGFSG+Kartika-Bold": [
+    "0/54",
+    null
+   ],
+   "BCDNEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "prs_5.pdf",
+  "ml_words": 1305,
+  "self_verified": 0.9195,
+  "stretches": {
+   "verified": 1217,
+   "nofont": 114,
+   "unverified": 77
+  },
+  "sec": 19.6,
+  "subsets": {
+   "BCDEEE+NotoSerifMalayalam": [
+    "40/40",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDFEE+NotoSerifMalayalam-Bold": [
+    "35/35",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDGEE+NotoSerifMalayalam-Bold": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCDHEE+NotoSerifMalayalam": [
+    "151/151",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDIEE+NotoSerifMalayalam": [
+    "151/151",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDJEE+NotoSerifMalayalam": [
+    "40/40",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "QHAODI+Kartika-Bold": [
+    "0/55",
+    null
+   ],
+   "BCDMEE+Rachana": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCDNEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCEAEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "prs_6.pdf",
+  "ml_words": 1293,
+  "self_verified": 0.9374,
+  "stretches": {
+   "verified": 1228,
+   "nofont": 114,
+   "unverified": 54
+  },
+  "sec": 19.22,
+  "subsets": {
+   "BCDEEE+NotoSerifMalayalam": [
+    "157/157",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDFEE+NotoSerifMalayalam": [
+    "40/40",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDGEE+NotoSerifMalayalam-Bold": [
+    "64/64",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDHEE+NotoSerifMalayalam-Bold": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCDIEE+NotoSerifMalayalam": [
+    "157/157",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDJEE+NotoSerifMalayalam": [
+    "40/40",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "YBXVSH+Kartika-Bold": [
+    "0/55",
+    null
+   ],
+   "BCDMEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCDPEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCEAEE+Kartika-Bold": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCEBEE+Rachana": [
+    "non-Malayalam font",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "prs_7.pdf",
+  "ml_words": 318,
+  "self_verified": 0.8836,
+  "stretches": {
+   "verified": 286,
+   "nofont": 127,
+   "unverified": 4
+  },
+  "sec": 28.75,
+  "subsets": {
+   "BCDEEE+NotoSerifMalayalam": [
+    "36/36",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDFEE+NotoSerifMalayalam-Bold": [
+    "33/33",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDGEE+NotoSerifMalayalam-Bold": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCDHEE+NotoSerifMalayalam": [
+    "140/140",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDIEE+NotoSerifMalayalam": [
+    "140/140",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "AZHOFZ+Kartika-Bold": [
+    "0/54",
+    null
+   ],
+   "BCDKEE+NotoSerifMalayalam-Bold": [
+    "33/33",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDNEE+NotoSerifMalayalam": [
+    "36/36",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDOEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCEBEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "prs_8.pdf",
+  "ml_words": 1307,
+  "self_verified": 0.9617,
+  "stretches": {
+   "verified": 1296,
+   "nofont": 130,
+   "unverified": 15
+  },
+  "sec": 20.19,
+  "subsets": {
+   "BCDEEE+NotoSerifMalayalam": [
+    "40/40",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDFEE+NotoSerifMalayalam-Bold": [
+    "36/36",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDGEE+NotoSerifMalayalam-Bold": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCDHEE+NotoSerifMalayalam": [
+    "155/155",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDIEE+NotoSerifMalayalam": [
+    "155/155",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDJEE+NotoSerifMalayalam": [
+    "40/40",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "GWYLEP+Kartika-Bold": [
+    "0/55",
+    null
+   ],
+   "BCDLEE+Kartika": [
+    "non-Malayalam font",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "prs_9.pdf",
+  "ml_words": 4561,
+  "self_verified": 0.9513,
+  "stretches": {
+   "verified": 4450,
+   "nofont": 387,
+   "unverified": 58
+  },
+  "sec": 48.45,
+  "subsets": {
+   "BCDFEE+NotoSerifMalayalam": [
+    "158/158",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDGEE+NotoSerifMalayalam": [
+    "46/46",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDHEE+NotoSerifMalayalam-Bold": [
+    "78/78",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ],
+   "BCDIEE+NotoSerifMalayalam-Bold": [
+    "non-Malayalam font",
+    null
+   ],
+   "BCDJEE+NotoSerifMalayalam": [
+    "158/158",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "BCDKEE+NotoSerifMalayalam": [
+    "46/46",
+    "v101/NotoSerifMalayalam-Regular.ttf"
+   ],
+   "QLIOWP+Kartika-Bold": [
+    "0/54",
+    null
+   ],
+   "BCDNEE+NotoSerifMalayalam-Bold": [
+    "78/78",
+    "v101/NotoSerifMalayalam-Bold.ttf"
+   ]
+  }
+ },
+ {
+  "pdf": "air_1.pdf",
+  "ml_words": 761,
+  "self_verified": 0.8528,
+  "stretches": {
+   "verified": 652,
+   "unverified": 112
+  },
+  "sec": 1.46,
+  "subsets": {}
+ },
+ {
+  "pdf": "ku_1.pdf",
+  "ml_words": 282,
+  "self_verified": 0.9468,
+  "stretches": {
+   "verified": 271,
+   "unverified": 15
+  },
+  "sec": 0.69,
+  "subsets": {}
+ },
+ {
+  "pdf": "ku_2.pdf",
+  "ml_words": 535,
+  "self_verified": 0.9477,
+  "stretches": {
+   "verified": 550,
+   "unverified": 28
+  },
+  "sec": 1.4,
+  "subsets": {}
+ },
+ {
+  "pdf": "ku_3.pdf",
+  "ml_words": 609,
+  "self_verified": 0.9442,
+  "stretches": {
+   "verified": 596,
+   "unverified": 34
+  },
+  "sec": 1.46,
+  "subsets": {}
+ },
+ {
+  "pdf": "ku_4.pdf",
+  "ml_words": 73,
+  "self_verified": 0.863,
+  "stretches": {
+   "unverified": 10,
+   "verified": 66
+  },
+  "sec": 0.91,
+  "subsets": {}
+ },
+ {
+  "pdf": "lsg_1.pdf",
+  "ml_words": 574,
+  "self_verified": 0.0,
+  "stretches": {
+   "nofont": 4072
+  },
+  "sec": 1.2,
+  "subsets": {
+   "QRBAAA+Meera": [
+    "0/185",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "lsg_4.pdf",
+  "ml_words": 138,
+  "self_verified": 0.0,
+  "stretches": {
+   "nofont": 937
+  },
+  "sec": 0.33,
+  "subsets": {
+   "QBBAAA+Meera": [
+    "0/115",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "lsg_5.pdf",
+  "ml_words": 219,
+  "self_verified": 0.0,
+  "stretches": {
+   "nofont": 1394
+  },
+  "sec": 0.42,
+  "subsets": {
+   "QCBAAA+Meera": [
+    "0/129",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "lsg_6.pdf",
+  "ml_words": 380,
+  "self_verified": 0.0,
+  "stretches": {
+   "nofont": 2531
+  },
+  "sec": 1.11,
+  "subsets": {
+   "QMBAAA+Meera": [
+    "0/173",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "lsg_7.pdf",
+  "ml_words": 336,
+  "self_verified": 0.0,
+  "stretches": {
+   "nofont": 2114
+  },
+  "sec": 0.57,
+  "subsets": {
+   "QCBAAA+Meera": [
+    "0/144",
+    null
+   ]
+  }
+ },
+ {
+  "pdf": "lsg_10.pdf",
+  "ml_words": 210,
+  "self_verified": 0.0,
+  "stretches": {
+   "nofont": 1346
+  },
+  "sec": 0.52,
+  "subsets": {
+   "QDBAAA+Meera": [
+    "0/96",
+    null
+   ]
+  }
+ }
+]

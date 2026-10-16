@@ -1,0 +1,12 @@
+Unshape - Copyright 2026 Novain Shibu. Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This repository contains code and aggregate results only. It does not contain third-party documents, fonts or Wikipedia text.
+
+Dependencies (installed separately, not included): HarfBuzz / uharfbuzz (MIT / Apache-2.0), fontTools (MIT),
+pdfminer.six (MIT), PyMuPDF (AGPL-3.0 or commercial licence from Artifex; used for page tracing and rendering - users must
+comply with its licence), Tesseract OCR (Apache-2.0; baseline only, run on Kaggle).
+Fonts fetched by src/fetch_fonts.py are under their own licences (Noto: SIL OFL 1.1; SMC fonts: SIL OFL / GPL with font
+exception). Nirmala UI is a Microsoft font used only from a local Windows installation.
+Synthetic test text comes from Malayalam Wikipedia (CC BY-SA 4.0) and is downloaded by src/fetch_text.py, not redistributed.
+
+Parts of this work were produced with AI assistance (Claude, Anthropic), directed and reviewed by the author.

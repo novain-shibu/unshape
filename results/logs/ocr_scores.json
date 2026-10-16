@@ -1,0 +1,174 @@
+{
+ "wiki_10_NirmalaUI.edge.pdf": {
+  "pages": 5,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 6.0,
+  "ocr_word_recall": 0.9309,
+  "ocr_cer": 0.0158,
+  "pymupdf_word_recall": 0.8022,
+  "pymupdf_cer": 0.027,
+  "pdfminer_word_recall": 0.5542,
+  "pdfminer_cer": 0.136,
+  "unshape_word_recall": 0.9906,
+  "unshape_cer": 0.002
+ },
+ "wiki_10_NirmalaUI.word.pdf": {
+  "pages": 6,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 4.72,
+  "ocr_word_recall": 0.9388,
+  "ocr_cer": 0.01,
+  "pymupdf_word_recall": 0.3375,
+  "pymupdf_cer": 0.2024,
+  "pdfminer_word_recall": 0.3375,
+  "pdfminer_cer": 0.2029,
+  "unshape_word_recall": 0.9937,
+  "unshape_cer": 0.0007
+ },
+ "wiki_5545_NirmalaUI.edge.pdf": {
+  "pages": 5,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 5.7,
+  "ocr_word_recall": 0.9288,
+  "ocr_cer": 0.0143,
+  "pymupdf_word_recall": 0.8136,
+  "pymupdf_cer": 0.0228,
+  "pdfminer_word_recall": 0.5644,
+  "pdfminer_cer": 0.1156,
+  "unshape_word_recall": 0.9949,
+  "unshape_cer": 0.0007
+ },
+ "wiki_5545_NirmalaUI.word.pdf": {
+  "pages": 6,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 4.57,
+  "ocr_word_recall": 0.939,
+  "ocr_cer": 0.0111,
+  "pymupdf_word_recall": 0.4288,
+  "pymupdf_cer": 0.165,
+  "pdfminer_word_recall": 0.4237,
+  "pdfminer_cer": 0.1654,
+  "unshape_word_recall": 0.9949,
+  "unshape_cer": 0.001
+ },
+ "air_1.pdf": {
+  "pages": 9,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 5.69,
+  "verified_words": 649,
+  "ocr_has_ours": 0.9353,
+  "pymupdf_has_ours": 0.2234
+ },
+ "ku_1.pdf": {
+  "pages": 3,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 5.17,
+  "verified_words": 267,
+  "ocr_has_ours": 0.9326,
+  "pymupdf_has_ours": 0.3184
+ },
+ "ku_2.pdf": {
+  "pages": 3,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 7.98,
+  "verified_words": 507,
+  "ocr_has_ours": 0.9586,
+  "pymupdf_has_ours": 0.2525
+ },
+ "ku_3.pdf": {
+  "pages": 5,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 7.2,
+  "verified_words": 575,
+  "ocr_has_ours": 0.9409,
+  "pymupdf_has_ours": 0.2626
+ },
+ "ku_4.pdf": {
+  "pages": 1,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 3.54,
+  "verified_words": 63,
+  "ocr_has_ours": 0.9683,
+  "pymupdf_has_ours": 0.2381
+ },
+ "prs_1.pdf": {
+  "pages": 8,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 5.15,
+  "verified_words": 410,
+  "ocr_has_ours": 0.9927,
+  "pymupdf_has_ours": 0.3488
+ },
+ "prs_10.pdf": {
+  "pages": 6,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 4.79,
+  "verified_words": 317,
+  "ocr_has_ours": 0.9937,
+  "pymupdf_has_ours": 0.3375
+ },
+ "prs_2.pdf": {
+  "pages": 8,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 4.82,
+  "verified_words": 386,
+  "ocr_has_ours": 0.9819,
+  "pymupdf_has_ours": 0.3653
+ },
+ "prs_3.pdf": {
+  "pages": 15,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 7.5,
+  "verified_words": 2229,
+  "ocr_has_ours": 0.9803,
+  "pymupdf_has_ours": 0.3239
+ },
+ "prs_4.pdf": {
+  "pages": 15,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 7.5,
+  "verified_words": 2212,
+  "ocr_has_ours": 0.9788,
+  "pymupdf_has_ours": 0.3246
+ },
+ "prs_5.pdf": {
+  "pages": 15,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 6.25,
+  "verified_words": 1200,
+  "ocr_has_ours": 0.9783,
+  "pymupdf_has_ours": 0.355
+ },
+ "prs_6.pdf": {
+  "pages": 15,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 6.21,
+  "verified_words": 1212,
+  "ocr_has_ours": 0.9761,
+  "pymupdf_has_ours": 0.3705
+ },
+ "prs_7.pdf": {
+  "pages": 6,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 4.71,
+  "verified_words": 281,
+  "ocr_has_ours": 0.9822,
+  "pymupdf_has_ours": 0.4306
+ },
+ "prs_8.pdf": {
+  "pages": 15,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 6.17,
+  "verified_words": 1257,
+  "ocr_has_ours": 0.9745,
+  "pymupdf_has_ours": 0.3325
+ },
+ "prs_9.pdf": {
+  "pages": 15,
+  "ocr_errors": 0,
+  "ocr_sec_per_page": 6.89,
+  "verified_words": 1928,
+  "ocr_has_ours": 0.9637,
+  "pymupdf_has_ours": 0.2552
+ }
+}

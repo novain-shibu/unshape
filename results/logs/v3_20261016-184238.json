@@ -1,0 +1,74 @@
+[
+ {
+  "pdf": "wiki_5545_NirmalaUI.word.pdf",
+  "ml_words": 592,
+  "self_verified": 0.9983,
+  "stretches": {
+   "verified": 596,
+   "unverified": 1
+  },
+  "sec": 3.18,
+  "subsets": {
+   "BCDEEE+NirmalaUI": [
+    "212/212",
+    "Fonts/Nirmala.ttc"
+   ],
+   "BCDFEE+NirmalaUI": [
+    "212/212",
+    "Fonts/Nirmala.ttc"
+   ]
+  }
+ },
+ {
+  "pdf": "wiki_5545_NirmalaUI.edge.pdf",
+  "ml_words": 592,
+  "self_verified": 0.9983,
+  "stretches": {
+   "verified": 596,
+   "unverified": 1
+  },
+  "sec": 0.65,
+  "subsets": {
+   "AAAAAA+NirmalaUI": [
+    "137/137",
+    "Fonts/Nirmala.ttc"
+   ]
+  }
+ },
+ {
+  "pdf": "wiki_10_NirmalaUI.word.pdf",
+  "ml_words": 646,
+  "self_verified": 0.9876,
+  "stretches": {
+   "verified": 646,
+   "unverified": 12
+  },
+  "sec": 1.2,
+  "subsets": {
+   "BCDEEE+NirmalaUI": [
+    "355/355",
+    "Fonts/Nirmala.ttc"
+   ],
+   "BCDFEE+NirmalaUI": [
+    "355/355",
+    "Fonts/Nirmala.ttc"
+   ]
+  }
+ },
+ {
+  "pdf": "wiki_10_NirmalaUI.edge.pdf",
+  "ml_words": 647,
+  "self_verified": 0.9876,
+  "stretches": {
+   "verified": 646,
+   "unverified": 12
+  },
+  "sec": 0.68,
+  "subsets": {
+   "AAAAAA+NirmalaUI": [
+    "184/184",
+    "Fonts/Nirmala.ttc"
+   ]
+  }
+ }
+]
