@@ -1,5 +1,6 @@
 # Unshape
-n[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23418945.svg)](https://doi.org/10.5281/zenodo.23418945)
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23418945.svg)](https://doi.org/10.5281/zenodo.23418945)
 
 Rendering-verified Malayalam text recovery from born-digital PDFs by **inverting OpenType shaping**: identify the exact font
 build, search for the Unicode text whose HarfBuzz shaping reproduces the PDF's glyph IDs, and accept a word only if re-shaping
