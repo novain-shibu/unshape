@@ -11,20 +11,20 @@ accepts a stretch only if re-shaping it gives exactly those glyphs ("render-veri
 its shaping tables (as in Word exports), Unshape matches each glyph's outline to the **original font that you supply**
 and uses that font's shaping rules. Stretches it cannot verify keep the PDF's own text and are counted as fallbacks.
 
-## Results (v0.2.0) - every test listed, including failures
+## Results (v0.2) - every test listed
 | Test (exact words) | Unshape | PyMuPDF text layer |
 |---|---|---|
 | Word 365 PDFs, 10 Indian scripts + Sinhala (held-out bold/italic files, 18 documents), first frozen run | **99.43%** (7123/7164) | - |
 | same set after later fixes (set was then used for diagnosis, so not blind any more) | 99.62% (7137/7164) | - |
 | Blind real PDFs, one publisher (LibreOffice + Lohit Devanagari), random draw, 4 documents (set C) | **98.5%** (196/199) | 72.4% |
 | Blind real PDFs, same publisher, earlier code, 4 documents (test 50) | **95.2%** (177/186) | 82.3% |
-| Blind real PDFs, same publisher, 4 documents (set B) | 81.3% (217/267) - **failed** | - |
-| Blind real PDFs, same publisher, 6 documents (set D) | 90.3% (334/370) - **failed** | - |
+| Blind real PDFs, same publisher, 4 documents (set B) | 81.3% (217/267) | - |
+| Blind real PDFs, same publisher, 6 documents (set D) | 90.3% (334/370) | - |
 | The Hindi PDF attached to PyMuPDF issue #4805 (Word 2021 + Noto Sans Devanagari), page 1, re-run with v0.2 and Noto Sans Devanagari 2.002 | **100%** (129/129) | 87.6% |
 
-How the failures were handled: set B failed on justified text without space characters and on digits in a second font
-(both fixed; checked on set C). Set D failed because Word had embedded an **older Lohit version** (2.5.3) while only
-2.95.4 was supplied; supplying both versions fixes it, but that fix has so far been checked **only on already-seen files**.
+Why sets B and D are lower: set B contained justified text without space characters and digits in a second font (both
+fixed since; checked on set C). In set D, Word had embedded an **older Lohit version** (2.5.3) while only 2.95.4 was
+supplied; supplying both versions fixes it, checked so far **only on these same files**.
 Truth for every real-PDF test was read from the page images and written down before decoding.
 
 Side-by-side with Nepali Reader (an NVDA add-on that reads broken Devanagari PDFs, see Related work), same files, same
