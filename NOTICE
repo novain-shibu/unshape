@@ -4,7 +4,7 @@ From version 0.2.0, Unshape is licensed under the GNU Affero General Public Lice
 commercial licence from the author (see COMMERCIAL.md). Version 0.1.0 (Malayalam research prototype, tag v0.1.0) was
 published under the Apache License 2.0 and remains available under that licence.
 
-Included data: data/train_<lang>.txt contain text from Wikipedia (CC BY-SA 4.0); see data/ATTRIBUTION.md. This data is
+Included data: unshape/data/train_<lang>.txt contain text from Wikipedia (CC BY-SA 4.0); see unshape/data/ATTRIBUTION.md. This data is
 licensed under CC BY-SA 4.0, not under the AGPL.
 
 Not included: no fonts and no third-party PDFs are distributed. Reference fonts are supplied by the user (for example Noto

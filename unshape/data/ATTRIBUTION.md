@@ -1,4 +1,4 @@
-# Attribution for data/train_<lang>.txt
+# Attribution for unshape/data/train_<lang>.txt
 
 These files contain plain text taken from articles of the Wikipedia editions in Bengali, Gujarati, Hindi, Kannada,
 Malayalam, Odia, Punjabi, Sinhala, Tamil and Telugu, written by **Wikipedia contributors**.

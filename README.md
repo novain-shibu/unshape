@@ -20,7 +20,7 @@ and uses that font's shaping rules. Stretches it cannot verify keep the PDF's ow
 | Blind real PDFs, same publisher, earlier code, 4 documents (test 50) | **95.2%** (177/186) | 82.3% |
 | Blind real PDFs, same publisher, 4 documents (set B) | 81.3% (217/267) - **failed** | - |
 | Blind real PDFs, same publisher, 6 documents (set D) | 90.3% (334/370) - **failed** | - |
-| The Hindi PDF attached to PyMuPDF issue #4805 (Word 2021 + Noto Sans Devanagari), page 1 - earlier pre-release script, not yet re-run with v0.2 | 100% (129/129) | 87.6% |
+| The Hindi PDF attached to PyMuPDF issue #4805 (Word 2021 + Noto Sans Devanagari), page 1, re-run with v0.2 and Noto Sans Devanagari 2.002 | **100%** (129/129) | 87.6% |
 
 How the failures were handled: set B failed on justified text without space characters and on digits in a second font
 (both fixed; checked on set C). Set D failed because Word had embedded an **older Lohit version** (2.5.3) while only
@@ -34,10 +34,9 @@ Unshape 100%, Nepali Reader 55.6%.
 
 ## Use
 ```
-git clone https://github.com/novain-shibu/unshape && cd unshape    # run from the repository folder (data/ is used)
-pip install pymupdf fonttools uharfbuzz
-python -m unshape.decode file.pdf --font Lohit-Devanagari.ttf --font NotoSansDevanagari-Regular.ttf
-python -m unshape.decode file.pdf --font ... --json      # per-font glyph-match report, verified/fallback counts, text
+pip install git+https://github.com/novain-shibu/unshape            # installs the `unshape` command (Python 3.10+)
+unshape file.pdf --font Lohit-Devanagari.ttf --font NotoSansDevanagari-Regular.ttf
+unshape file.pdf --font ... --json      # per-font glyph-match report, verified/fallback counts, text
 ```
 Supply the original fonts of the document: free fonts (Noto, Lohit - if a document was made with an older font version,
 supply that version too) or fonts installed on your own system under their own licences (for Word documents, often
@@ -79,7 +78,7 @@ see [COMMERCIAL.md](COMMERCIAL.md). **Open for talks** about commercial licences
 and training-data pipelines, custom work for further scripts and fonts, and research partnerships:
 **Novain Shibu** · georgeshibu380@gmail.com · [github.com/novain-shibu](https://github.com/novain-shibu) ·
 [linkedin.com/in/novain-shibu](https://www.linkedin.com/in/novain-shibu).
-`data/` is Wikipedia text under CC BY-SA 4.0 ([attribution](data/ATTRIBUTION.md)). Version 0.1.0 (below) remains available
+`unshape/data/` is Wikipedia text under CC BY-SA 4.0 ([attribution](unshape/data/ATTRIBUTION.md)). Version 0.1.0 (below) remains available
 under Apache-2.0. Parts of this work were produced with AI assistance (Claude, Anthropic), directed and reviewed by the
 author. Related audit: [finepdfs-audit](https://github.com/novain-shibu/finepdfs-audit). Cite via [CITATION.cff](CITATION.cff).
 

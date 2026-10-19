@@ -99,7 +99,9 @@ try:  # research setup: Windows' Nirmala UI; absent on other systems (the releas
 except Exception:
     FACES = {}
 RULES = Path(__file__).with_name("unshape_multi4.rules.json")
-DATA = Path(os.environ.get("UNSHAPE_DATA", Path(__file__).resolve().parent.parent / "data"))
+DATA = Path(os.environ.get("UNSHAPE_DATA") or next((d for d in (Path(__file__).resolve().parent / "data",
+                                                               Path(__file__).resolve().parent.parent / "data")
+                                                     if (d / "train_hi.txt").exists()), Path(__file__).resolve().parent / "data"))
 RULESETS = {}  # Word-vs-HarfBuzz glyph deltas for Nirmala UI, keyed by face style then language
 if RULES.exists():
     for k, v in json.loads(RULES.read_text()).items():

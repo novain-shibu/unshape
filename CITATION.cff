@@ -9,5 +9,5 @@ license: AGPL-3.0-or-later
 doi: 10.5281/zenodo.23418945
 repository-code: https://github.com/novain-shibu/unshape
 date-released: 2026-10-19
-version: "0.2.0"
+version: "0.2.1"
 keywords: [Hindi, Devanagari, Malayalam, Indic scripts, PDF text extraction, OpenType, HarfBuzz, text shaping, OCR, document AI]

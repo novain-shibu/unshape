@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "unshape"
-version = "0.2.0"
+version = "0.2.1"
 description = "Exact text from complex-script PDFs with broken text layers, by inverting OpenType shaping (no OCR)"
 readme = "README.md"
 license = {text = "AGPL-3.0-or-later OR LicenseRef-Commercial"}
@@ -19,4 +19,4 @@ unshape = "unshape.decode:main"
 packages = ["unshape"]
 
 [tool.setuptools.package-data]
-unshape = ["unshape_multi4.rules.json"]
+unshape = ["unshape_multi4.rules.json", "data/*.txt", "data/ATTRIBUTION.md"]
