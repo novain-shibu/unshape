@@ -22,11 +22,52 @@ import unshape_emb as E  # noqa: E402  (same module object that unshape_emb4 pat
 sys.argv = sys.argv[:1] + _ARGV
 
 MIN_MATCH = 0.8  # share of a subset's non-empty glyphs that must match a reference font exactly
+AUTO_SYSTEM_FONTS = True  # also look for an installed font with the embedded font's name
 
 
 def _sig(tt, g):
     gs = tt.getGlyphSet(); p = DecomposingRecordingPen(gs); gs[g].draw(p)
     return (tuple(p.value), tt["hmtx"][g][0])
+
+
+def _cmap(tt):
+    """Best Unicode cmap, or {} when the embedded program has no (or a broken) cmap table."""
+    try:
+        return tt.getBestCmap() or {}
+    except Exception:
+        return {}
+
+
+def _font_dirs():
+    import os
+    d = [Path(os.environ.get("WINDIR", "C:/Windows")) / "Fonts", Path.home() / "AppData/Local/Microsoft/Windows/Fonts",
+         Path("/usr/share/fonts"), Path("/usr/local/share/fonts"), Path.home() / ".fonts", Path.home() / ".local/share/fonts",
+         Path("/Library/Fonts"), Path("/System/Library/Fonts"), Path.home() / "Library/Fonts"]
+    return [x for x in d if x.is_dir()]
+
+
+_SYS = None
+
+
+def _system_fonts_named(name):
+    """Fonts installed on THIS machine whose family/full name matches an embedded font name (e.g. Mangal, Kokila).
+    Used only as reference fonts, locally; nothing is copied or shipped."""
+    global _SYS
+    if _SYS is None:
+        _SYS = []
+        for d in _font_dirs():
+            for f in d.rglob("*"):
+                if f.suffix.lower() in (".ttf", ".otf", ".ttc"):
+                    _SYS.append(f)
+    key = "".join(c for c in name.lower().split(",")[0].split("-")[0] if c.isalnum())
+    if len(key) < 4:
+        return []
+    out = []
+    for f in _SYS:
+        stem = "".join(c for c in f.stem.lower() if c.isalnum())
+        if len(stem) >= 4 and (stem.startswith(key[:6]) or key.startswith(stem[:6])):
+            out.append(str(f))
+    return out[:6]
 
 
 def _ref_fonts(paths):
@@ -53,7 +94,7 @@ def _match(sub, ref):
             pass
     remap, matched, total, amb = {}, 0, 0, 0
     order = ref.getGlyphOrder()
-    space = (ref.getBestCmap() or {}).get(32)
+    space = _cmap(ref).get(32)
     for i, g in enumerate(sub.getGlyphOrder()):
         try:
             s = _sig(sub, g)
@@ -419,22 +460,35 @@ def decode_pdf(path, ref_paths=(), max_seconds=300):
                 buf = doc.extract_font(xref)[3]; sub = TTFont(io.BytesIO(buf))
             except Exception:
                 continue
-            cps = [cp for cp in (sub.getBestCmap() or {}) if 0x0900 <= cp < 0x0E00]
+            cps = [cp for cp in _cmap(sub) if 0x0900 <= cp < 0x0E00]
             if "GSUB" in sub and name not in faces:
                 try:
-                    faces[name] = E.EmbFace(buf); remaps[name] = None
-                    report.append({"font": name, "source": "embedded"}); continue
+                    fe = E.EmbFace(buf)
+                    if getattr(fe, "block", None) in E.SCRIPT:
+                        faces[name] = fe; remaps[name] = None
+                        report.append({"font": name, "source": "embedded"}); continue
                 except Exception:
                     pass
-            if name in faces or not refs:
+            if name in faces:
                 continue
             best = None
             for label, data, ref in refs:
                 remap, m, tot, amb = _match(sub, ref)
                 if tot and (best is None or m / tot > best[2]):
                     best = (label, data, m / tot, remap, amb, tot)
+            if (best is None or best[2] < MIN_MATCH) and AUTO_SYSTEM_FONTS:
+                # no supplied reference fits: try fonts installed on this machine with the same name (e.g. Mangal)
+                for label, data, ref in _ref_fonts(_system_fonts_named(name)):
+                    remap, m, tot, amb = _match(sub, ref)
+                    if tot and (best is None or m / tot > best[2]):
+                        best = (label, data, m / tot, remap, amb, tot)
+            fc = None
             if best and best[2] >= MIN_MATCH:
-                fc = E.EmbFace(best[1])
+                try:
+                    fc = E.EmbFace(best[1])
+                except Exception:  # reference without a usable cmap/shaping data
+                    fc = None
+            if fc is not None:
                 own = collections.Counter(cp & ~0x7F for cp in cps)  # script from the PDF's OWN font, not the reference
                 if own:                                             # (a multi-script reference would flip the script)
                     fc.block = own.most_common(1)[0][0]
@@ -460,9 +514,13 @@ def decode_pdf(path, ref_paths=(), max_seconds=300):
         if timed_out or time.time() - t0 > max_seconds:  # out of time: keep the PDF's own text for the rest
             timed_out = True; st["timeout_fallback"] += 1
             parts.append("".join(u if isinstance(u, str) else (chr(u) if u > 0 else "") for _, u in run)); continue
-        if f is None:
-            parts.append("".join(u for _, u in run)); continue
-        parts.append(_decode(run, f, st))
+        if f is None or getattr(f, "block", None) not in E.SCRIPT:
+            parts.append("".join(u if isinstance(u, str) else (chr(u) if u > 0 else "") for _, u in run)); continue
+        try:
+            parts.append(_decode(run, f, st))
+        except Exception:  # never crash on one stretch: keep the PDF's own text for it
+            st["error_fallback"] += 1
+            parts.append("".join(u if isinstance(u, str) else (chr(u) if u > 0 else "") for _, u in run))
     return {"pdf": Path(path).name, "fonts": report, "stretches": dict(st),
             "text": " ".join(parts), "seconds": round(time.time() - t0, 2)}
 

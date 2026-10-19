@@ -11,6 +11,34 @@ accepts a stretch only if re-shaping it gives exactly those glyphs ("render-veri
 its shaping tables (as in Word exports), Unshape matches each glyph's outline to the **original font that you supply**
 and uses that font's shaping rules. Stretches it cannot verify keep the PDF's own text and are counted as fallbacks.
 
+## New in v0.3 (milestone): font-free mode - no font file needed
+`python -m unshape.fontfree` recovers the text **without the original font and without OCR**, from the PDF alone plus a
+plain word list. Observed in Word-made PDFs: Word keeps the font's own glyph numbers, and its text table labels each glyph
+with text taken from the first syllable the glyph appeared in (often the neighbour's text). Each glyph therefore has one
+fixed but often wrong label - a substitution code. The decoder chooses one meaning per glyph so that the most words become
+real words (character model + word list), turns visual order into logical order (pre-base vowel signs, reph), and reads
+nukta forms from the PDF's own glyph outlines. PDFs made with the same font can be decoded together.
+
+| Pre-registered test (exact words, fresh files, one run) | Font-free | Tesseract 5.3.4 OCR | PyMuPDF text layer |
+|---|---|---|---|
+| Hindi, Word for Microsoft 365, **Mangal** (3 Wikipedia texts, 592 words) - fonts never seen while developing | **97.8%** | 95.8% | 70.6% |
+| Same texts, **Kokila** | **97.3%** | 96.3% | 69.3% |
+| Earlier decoder version, Hindi Word + Nirmala UI, 2 files (bar was 90%) | 84.8% (below bar) | - | 66.4% |
+| Legacy 8-bit fonts (Kruti-style, SM-Tamil), first try | 0/18 words - does not work yet | - | - |
+
+Development results only (not yet a fair test): Tamil 99.4%, Bengali 82%; Telugu, Malayalam, Sinhala not working yet
+(35-55%). The released command reproduces the Mangal result exactly (579/592) with only the FrequencyWords Hindi list.
+
+```
+python -m unshape.fontfree file.pdf [more PDFs made with the same font ...] --wordlist hi_full.txt
+```
+Word list (not included; CC BY-SA 4.0, from FrequencyWords):
+`https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/hi/hi_full.txt`
+
+Also new in v0.3: crash fixes for embedded fonts without a character table and for non-Indic fonts with shaping tables;
+when no supplied font matches, Unshape now looks for an installed font with the same name (for example Mangal) on your
+own machine. Output on all earlier test files is byte-identical to v0.2.1 (23/23).
+
 ## Results (v0.2) - every test listed
 | Test (exact words) | Unshape | PyMuPDF text layer |
 |---|---|---|
@@ -45,10 +73,14 @@ Nirmala UI or Mangal). Check first whether a PDF is broken at all with
 worse than plain extraction (one word in 66 in a blind test).
 
 ## Limits (read before relying on it)
-- **Needs the original font** (or the embedded font with its shaping tables). Without it, nothing is recovered.
-- **Mangal is not tested yet.** In a random sample of 150 Hindi PDFs from the web (FinePDFs originals), none used Lohit;
-  most born-digital ones used Mangal (Word). The real-PDF results above therefore describe one publisher's production
-  chain; Mangal is the next test. Users must supply their own licensed copy (Windows "Hindi Supplemental Fonts").
+- **Font-based mode needs the original font** (or the embedded font with its shaping tables). Without it, use the
+  font-free mode (v0.3), which so far is proven only on Hindi Word for Microsoft 365 files of a few hundred words or more;
+  very short documents need other PDFs of the same font decoded together.
+- **Real web Hindi PDFs with Mangal (font-based mode, v0.2.1, 10 documents, pre-registered):** 54.3% vs PyMuPDF 51.1% -
+  below the bar. Three documents crashed (fixed in v0.3), three used another font or an older Mangal build; on the four
+  whose embedded Mangal matched the installed one, 134/144 words (93.1%, worked out after the test). Not re-tested on
+  fresh documents yet. In a random sample of 150 web Hindi PDFs (FinePDFs originals), none used Lohit, so the Lohit
+  results above describe one publisher's production chain. Users supply their own licensed fonts.
 - **No scans.** Pages without a text layer need OCR.
 - **"Verified" means "renders identically".** Rarely two spellings render the same; then a character language model
   breaks the tie and the stretch is counted as ambiguous.
