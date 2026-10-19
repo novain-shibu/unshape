@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Unshape: rendering-verified Malayalam text recovery from born-digital PDFs by inverting OpenType shaping"
+title: "Unshape: exact text recovery from complex-script PDFs with broken text layers by inverting OpenType shaping"
 type: software
 authors:
   - family-names: Shibu
     given-names: Novain
-license: Apache-2.0
+license: AGPL-3.0-or-later
 doi: 10.5281/zenodo.23418945
 repository-code: https://github.com/novain-shibu/unshape
-date-released: 2026-10-16
-version: "0.1.0"
-keywords: [Malayalam, Indic scripts, PDF text extraction, OpenType, HarfBuzz, text shaping, OCR, document AI]
+date-released: 2026-10-19
+version: "0.2.0"
+keywords: [Hindi, Devanagari, Malayalam, Indic scripts, PDF text extraction, OpenType, HarfBuzz, text shaping, OCR, document AI]

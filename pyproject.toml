@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unshape"
+version = "0.2.0"
+description = "Exact text from complex-script PDFs with broken text layers, by inverting OpenType shaping (no OCR)"
+readme = "README.md"
+license = {text = "AGPL-3.0-or-later OR LicenseRef-Commercial"}
+authors = [{name = "Novain Shibu", email = "georgeshibu380@gmail.com"}]
+requires-python = ">=3.10"
+dependencies = ["pymupdf", "fonttools", "uharfbuzz"]
+
+[project.scripts]
+unshape = "unshape.decode:main"
+
+[tool.setuptools]
+packages = ["unshape"]
+
+[tool.setuptools.package-data]
+unshape = ["unshape_multi4.rules.json"]

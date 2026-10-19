@@ -119,6 +119,8 @@ correctly, e.g. LuaTeX/HarfBuzz work), one project-specific decoder for a single
 The idea of reversing glyph substitutions is known in principle; to our knowledge this is the first general, measured
 implementation with a per-word re-shaping check. We would welcome pointers to earlier work.
 
+**Correction (v0.2.0, 2026-10-19):** we have since found indic-legacy-pdf (github.com/harinaralasetty/indic-legacy-pdf, published 2026-10-13), which recovers Telugu text by HarfBuzz reverse shaping with a run-level reshape check, and Nepali Reader (github.com/SuyogDhungel/nepaliReader, 2026-10-05), which matches Devanagari glyph outlines to known fonts. The "first" wording above is withdrawn; see the README (Related work).
+
 ## 8. Reproduce
 
 ```
