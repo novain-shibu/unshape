@@ -55,6 +55,9 @@ worse than plain extraction (one word in 66 in a blind test).
 - **Speed:** about 2-60 seconds per document (lookup tables are built on first use of each font and script).
 - Known issues: a few unverified stretches fall back to the PDF's garbled text; one Malayalam Word reordering case.
 
+## Companion tool
+**[SeenRead](https://github.com/novain-shibu/seenread)** (same author, AGPL-3.0 or commercial) proves, word by word and without OCR, whether a PDF's extracted text is the text a human sees - including font-remap lies and hidden text - and uses Unshape for Indian scripts.
+
 ## Related work
 - **Nepali Reader** (github.com/SuyogDhungel/nepaliReader, NVDA add-on, since 2026-10-05): reads broken Devanagari PDFs
   inside the NVDA screen reader by matching glyph outlines to known Devanagari fonts; glyph-outline matching against
