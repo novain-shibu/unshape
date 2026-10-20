@@ -11,6 +11,35 @@ accepts a stretch only if re-shaping it gives exactly those glyphs ("render-veri
 its shaping tables (as in Word exports), Unshape matches each glyph's outline to the **original font that you supply**
 and uses that font's shaping rules. Stretches it cannot verify keep the PDF's own text and are counted as fallbacks.
 
+## New in v0.4: font-free mode for Bengali, Tamil, Malayalam, Sinhala (and Telugu, partly)
+Pre-registered test (PREREG_59: test files locked before development; one run; decoder frozen). Word for Microsoft 365
+PDFs made with Nirmala UI from Wikipedia text, two files per script decoded together, **no font file**, exact words:
+
+| Script | Font-free (v0.4) | PyMuPDF text layer |
+|---|---|---|
+| Tamil | **99.6%** | 55.6% |
+| Bengali | **94.7%** | 21.9% |
+| Sinhala | **93.6%** | 43.7% |
+| Malayalam | **91.3%** | 38.9% |
+| Telugu | **71.4%** | 46.3% |
+| All five | **91.1%** | 40.4% |
+
+Telugu is better than the text layer but still the hardest script here (many vowel signs are fused into consonant
+glyphs); more work is planned.
+
+What changed: per-script rules (signs drawn before their consonant, Sinhala zero-width-joiner conjuncts and two-part
+vowels, a vowel sign placed before a trailing virama, Telugu vowel signs placed after subscript consonants) and much
+bigger word lists. **The Wikipedia word list matters:** with FrequencyWords alone the same test gives Malayalam 52.6% and
+Sinhala 20.1% (worse than PyMuPDF); with FrequencyWords + Wikipedia it gives the numbers above. Hindi results (v0.3)
+are unchanged. Not yet tested for these scripts: other producers, other fonts, real web PDFs.
+
+```
+python tools/build_wikifreq.py ml ml_wiki.txt            # once per language; downloads the official Wikipedia dump
+python -m unshape.fontfree a.pdf b.pdf --wordlist ml_full.txt --wordlist ml_wiki.txt
+```
+FrequencyWords lists (CC BY-SA 4.0): `https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/<code>/<code>_full.txt`
+with `<code>` = hi, bn, ta, ml, te, si.
+
 ## New in v0.3 (milestone): font-free mode - no font file needed
 `python -m unshape.fontfree` recovers the text **without the original font and without OCR**, from the PDF alone plus a
 plain word list. Observed in Word-made PDFs: Word keeps the font's own glyph numbers, and its text table labels each glyph

@@ -1,10 +1,13 @@
 # Copyright (c) 2026 Novain Shibu. AGPL-3.0-or-later, or a commercial licence (see COMMERCIAL.md).
 """Font-free decoding of garbled Indic PDF text: no reference font, only the PDF itself and a word list.
 
-Usage:  python -m unshape.fontfree file1.pdf [file2.pdf ...] --wordlist hi_full.txt [--json]
+Usage:  python -m unshape.fontfree file1.pdf [file2.pdf ...] --wordlist LIST [--wordlist LIST2 ...] [--json]
         (PDFs made with the same font are decoded together: more text, better result.)
-Word list: one "word count" per line, e.g. FrequencyWords (CC BY-SA 4.0):
-  https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/hi/hi_full.txt
+Word lists: one "word count" per line, any number of them (merged). Recommended per language:
+  1. FrequencyWords (CC BY-SA 4.0), e.g. for Hindi:
+     https://raw.githubusercontent.com/hermitdave/FrequencyWords/master/content/2018/hi/hi_full.txt
+     (other codes: bn, ta, ml, te, si)
+  2. A Wikipedia word list built with tools/build_wikifreq.py (needed for Malayalam, Sinhala, Telugu; helps Bengali).
 
 The embedded font's glyph outlines tell which glyphs are real ink (a vowel sign mapped to SPACE is still ink). The PDF's
 own text map gives a label per glyph, right for most glyphs. Glyphs whose label is missing or blank but which draw ink
@@ -39,13 +42,15 @@ SCRIPTS = {  # block: consonants, virama, nukta, signs drawn BEFORE their conson
     0xD80: dict(cons=_r(0xd9a, 0xdc6), vir="්", nuk=None, pre=["ෙ", "ේ", "ෛ"], reph=None, dig=(0xde6, 0xdef)),
 }
 PRE, REPH = ["ि"], "र्"
+VATTU = False
 
 
 def use_script(block):
     """Switch the module tables (consonants, signs, candidate meanings) to one script block."""
-    global CONS, VIR, NUK, PRE, REPH, ALL
+    global CONS, VIR, NUK, PRE, REPH, ALL, VATTU
     S = SCRIPTS[block]
     CONS = set(S["cons"]); VIR = S["vir"]; NUK = S["nuk"] or ""; PRE = S["pre"]; REPH = S["reph"]
+    VATTU = block == 0xC00
     lo = block
     letters = [chr(c) for c in range(lo + 1, lo + 0x80) if not (S["dig"][0] <= c <= S["dig"][1]) and unicodedata.category(chr(c))[0] in "LM"]
     if block == 0x900:  # exactly the Devanagari list used before (keeps PREREG_58 behaviour)
@@ -54,6 +59,10 @@ def use_script(block):
         ALL = letters + [VIR + "र", "र" + VIR, NUK + VIR] + [c + VIR for c in sorted(CONS)]
     else:
         ALL = sorted(set(letters)) + [c + VIR for c in sorted(CONS)] + [VIR + c for c in sorted(CONS)] + list(PRE)
+        if block == 0xD80:  # Sinhala: yansaya / rakaransaya / repaya need ZERO WIDTH JOINER (they render differently without it)
+            Z = "\u200d"
+            ALL += [VIR + Z + "ය", VIR + Z + "ර", "ර" + VIR + Z] + [c + VIR + Z for c in sorted(CONS)]
+            ALL += ["ා" + VIR, "ෟ"]  # second halves of two-part vowels (o: e + aa, oo: e + aa + al-lakuna, au)
         if block == 0xC00:  # Telugu draws most vowel signs fused with the consonant: one glyph = consonant + sign
             signs = [chr(c) for c in range(0xc3e, 0xc4d) if unicodedata.category(chr(c)) in ("Mn", "Mc")]
             ALL += [c + v for c in sorted(CONS) for v in signs]
@@ -173,9 +182,22 @@ def logical(tokens):
     while j < len(t):
         if t[j] in PRE and j + 1 < len(t) and t[j + 1] and t[j + 1][0] in CONS:
             k = j + 1; cl = [t[k]]
-            while k + 1 < len(t) and (t[k].endswith(VIR) or t[k + 1] in (NUK, VIR) or t[k + 1].startswith(VIR)):
+            # extend over the consonant cluster: C (nukta)? ((virama) C)* - a virama joins only if a consonant follows
+            def _joins(k):
+                nxt = t[k + 1]
+                if nxt == NUK and NUK:
+                    return True
+                if nxt.startswith(VIR):
+                    return len(nxt) > 1 or (k + 2 < len(t) and t[k + 2][:1] in CONS)
+                return t[k].endswith(VIR) and nxt[:1] in CONS
+            while k + 1 < len(t) and _joins(k):
                 k += 1; cl.append(t[k])
-            res += cl + [t[j]]; j = k + 1; continue
+            joined = "".join(cl)
+            if joined.endswith(VIR) and len(joined) > 1 and not (k + 1 < len(t) and t[k + 1][:1] in CONS):
+                res += [joined[:-1], t[j], VIR]  # sign goes before a trailing virama (Sinhala e + al-lakuna = ee)
+            else:
+                res += cl + [t[j]]
+            j = k + 1; continue
         res.append(t[j]); j += 1
     # reph: a 'र्' meaning drawn after a cluster moves before it
     out = []
@@ -188,6 +210,19 @@ def logical(tokens):
                 k -= 1
             out.insert(k, tok); continue
         out.append(tok)
+    if VATTU and len(out) > 1:  # Telugu: a vowel sign fused with the base consonant belongs after its subscript consonants
+        fixed_out = []
+        i = 0
+        while i < len(out):
+            tok = out[i]
+            if len(tok) >= 2 and tok[0] in CONS and unicodedata.category(tok[-1]) in ("Mn", "Mc") and tok[-1] != VIR:
+                j = i + 1; subs = []
+                while j < len(out) and out[j].startswith(VIR) and len(out[j]) > 1 and out[j][1] in CONS:
+                    subs.append(out[j]); j += 1
+                if subs:
+                    fixed_out += [tok[:-1]] + subs + [tok[-1]]; i = j; continue
+            fixed_out.append(tok); i += 1
+        out = fixed_out
     return unicodedata.normalize("NFC", "".join(out))
 
 
@@ -337,12 +372,19 @@ def decode_pool(pdfs, lm, iters=60000, seed=0, sweeps=6, keep_label=0.0):
     return res
 
 
-def load_wordlist(path, min_count=2):
+def load_wordlist(paths, min_count=2, max_words=300000):
+    """Merge one or more "word count" lists (each capped at its max_words most frequent entries)."""
+    if isinstance(paths, str):
+        paths = [paths]
     wc = collections.Counter()
-    for line in open(path, encoding="utf-8"):
-        parts = line.rsplit(" ", 1)
-        if len(parts) == 2 and parts[1].strip().isdigit() and int(parts[1]) >= min_count:
-            wc[unicodedata.normalize("NFC", parts[0])] += int(parts[1])
+    for path in paths:
+        n = 0
+        for line in open(path, encoding="utf-8"):
+            parts = line.rsplit(" ", 1)
+            if len(parts) == 2 and parts[1].strip().isdigit() and int(parts[1]) >= min_count:
+                wc[unicodedata.normalize("NFC", parts[0])] += int(parts[1]); n += 1
+                if n >= max_words:
+                    break
     return LM(list(wc.items()))
 
 
@@ -351,7 +393,9 @@ def main(argv=None):
     a = list(sys.argv[1:] if argv is None else argv)
     if not a or a[0] in ("-h", "--help") or "--wordlist" not in a:
         print(__doc__); return 0
-    i = a.index("--wordlist"); wl = a[i + 1]; del a[i:i + 2]
+    wl = []
+    while "--wordlist" in a:
+        i = a.index("--wordlist"); wl.append(a[i + 1]); del a[i:i + 2]
     as_json = "--json" in a; a = [x for x in a if x != "--json"]
     res = decode_pool(a, load_wordlist(wl), keep_label=4)
     if as_json:
