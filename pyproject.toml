@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "unshape"
-version = "0.4.0"
+version = "0.5.0"
 description = "Exact text from complex-script PDFs with broken text layers, by inverting OpenType shaping (no OCR)"
 readme = "README.md"
 license = {text = "AGPL-3.0-or-later OR LicenseRef-Commercial"}
@@ -15,6 +15,7 @@ dependencies = ["pymupdf", "fonttools", "uharfbuzz"]
 [project.scripts]
 unshape = "unshape.decode:main"
 unshape-fontfree = "unshape.fontfree:main"
+unshape-route = "unshape.route:main"
 
 [tool.setuptools]
 packages = ["unshape"]

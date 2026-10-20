@@ -136,8 +136,9 @@ def nukta_pairs(keys):
     return out
 
 
-def read_runs(pdf, max_pages=None):
-    """Words as lists of (font_key, gid, label, x). Word breaks = real space glyphs (no ink) or gaps; never the label."""
+def read_runs(pdf, max_pages=None, pages=None):
+    """Words as lists of (font_key, gid, label, x). Word breaks = real space glyphs (no ink) or gaps; never the label.
+    If `pages` is a list, the page number of each word is appended to it."""
     doc = pymupdf.open(pdf); ink = {}
     for p in range(len(doc)):
         for xref, ext, typ, base, *_ in doc.get_page_fonts(p, full=True):
@@ -149,6 +150,12 @@ def read_runs(pdf, max_pages=None):
             except Exception:
                 ink[k] = None
     words, cur = [], []
+    pno = 0
+
+    def add(w):
+        words.append(w)
+        if pages is not None:
+            pages.append(pno)
     for pno, page in enumerate(doc):
         if max_pages and pno >= max_pages:
             break
@@ -162,15 +169,15 @@ def read_runs(pdf, max_pages=None):
                     continue
                 inky = inkmap.get(gid, bool(ch.strip())) if inkmap else bool(ch.strip())
                 if not inky:
-                    if cur: words.append(cur); cur = []
+                    if cur: add(cur); cur = []
                     continue
                 if cur and last_y is not None and abs(origin[1] - last_y) > 0.6 * s["size"]:
-                    words.append(cur); cur = []
+                    add(cur); cur = []
                 cur.append((fk, gid, ch, origin[0])); last_y = origin[1]
             if cur and not DEVA.search("".join(t[2] for t in cur)):
-                words.append(cur); cur = []
+                add(cur); cur = []
     if cur:
-        words.append(cur)
+        add(cur)
     return words
 
 
@@ -261,11 +268,13 @@ def decode(pdf, lm, iters=40000, seed=0):
     return decode_pool([pdf], lm, iters, seed)[0]
 
 
-def decode_pool(pdfs, lm, iters=60000, seed=0, sweeps=6, keep_label=0.0):
-    """One cipher for all PDFs: glyph identity = (font name, glyph id), shared by documents of the same font build."""
+def decode_pool(pdfs, lm, iters=60000, seed=0, sweeps=6, keep_label=0.0, by_page=False):
+    """One cipher for all PDFs: glyph identity = (font name, glyph id), shared by documents of the same font build.
+    Returns [(text, info)] per PDF; with by_page=True, [(text, info, [text of page 0, page 1, ...])]."""
     import random
     rnd = random.Random(seed)
-    per = [read_runs(p) for p in pdfs]
+    pg = [[] for _ in pdfs]
+    per = [read_runs(p, pages=g) for p, g in zip(pdfs, pg)]
     words = [w for ws in per for w in ws]
     key = lambda t: (t[0], t[1])
     isdeva = lambda w: bool(DEVA.search("".join(t[2] for t in w)))
@@ -366,9 +375,15 @@ def decode_pool(pdfs, lm, iters=60000, seed=0, sweeps=6, keep_label=0.0):
             meaning[b] = meaning[a] + NUK
     info = {"glyphs": len(glyphs), "changed": sum(meaning[g] != lab[g] for g in glyphs), "score": round(total, 1)}
     res = []
-    for ws in per:
+    for ws, wp in zip(per, pg):
         out = [logical([meaning[key(t)] for t in w]) if isdeva(w) else "".join(t[2] for t in w) for w in ws]
-        res.append((" ".join(out), info))
+        if by_page:
+            pt = collections.defaultdict(list)
+            for o, n in zip(out, wp):
+                pt[n].append(o)
+            res.append((" ".join(out), info, [" ".join(pt[n]) for n in range(max(wp, default=-1) + 1)]))
+        else:
+            res.append((" ".join(out), info))
     return res
 
 

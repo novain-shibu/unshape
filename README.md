@@ -11,6 +11,37 @@ accepts a stretch only if re-shaping it gives exactly those glyphs ("render-veri
 its shaping tables (as in Word exports), Unshape matches each glyph's outline to the **original font that you supply**
 and uses that font's shaping rules. Stretches it cannot verify keep the PDF's own text and are counted as fallbacks.
 
+## New in v0.5: `unshape-route` - safe to run on every PDF
+Font-free decoding is built for Word-style text layers, and it **damages PDFs whose text layer is already right** (an
+Edge-printed Hindi PDF: 96.0% of words correct as it is, 77.5% after decoding). `unshape-route` decides page by page:
+
+- **fine** - keep the PDF's own text (it has at least as many real words as the decode, or no Indic text)
+- **decoded** - the text layer is garbled and the font-free decode has clearly more real words (default: 5 points more)
+- **ocr** - a scanned page (little text, mostly image), or neither text reaches 50% real words
+
+"Real words" = share of the page's words found in the word list. One JSON line per page, so a pipeline can send only the
+`ocr` pages to OCR.
+
+```
+python -m unshape.route *.pdf --wordlist ta_full.txt --wordlist ta_wiki.txt > pages.jsonl
+```
+
+Pre-registered test (PREREG_64; router frozen before the test files were made; one run): 33 documents in 6 scripts
+(Hindi, Bengali, Tamil, Malayalam, Sinhala, Telugu), each article as a Word PDF, an Edge-printed PDF and a scanned copy;
+55 pages, 8,874 words.
+
+| | Words recovered (22 born-digital docs) |
+|---|---|
+| Always keep the PDF's own text | 68.0% |
+| Always run the font-free decode | 76.4% |
+| **`unshape-route`** | **88.9%** |
+| Best possible choice per document | 89.0% |
+
+54 of 55 pages got the right route (one Sinhala Word page kept its own text although the decode was 2 points better);
+all 11 scanned copies went to `ocr`. Our own files only (Word + Edge, Nirmala UI); real web PDFs not tested yet. Edge
+PDFs in Bengali, Malayalam and Telugu have their own, different text-layer damage that the decoder does not fix yet;
+the router keeps their own text.
+
 ## New in v0.4: font-free mode for Bengali, Tamil, Malayalam, Sinhala (and Telugu, partly)
 Pre-registered test (PREREG_59: test files locked before development; one run; decoder frozen). Word for Microsoft 365
 PDFs made with Nirmala UI from Wikipedia text, two files per script decoded together, **no font file**, exact words:
